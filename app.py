@@ -2,14 +2,16 @@ import streamlit as st
 from tensorflow import keras
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing import image
+from my_custom_layers import MyLayer  # or define it here
 import numpy as np
+import tensorflow as tf
 import os
 
 # Dataset directory paths
 dataset_dir_path = "cat-breeds"
 
 # Load model
-model = load_model('cat_breed_model.keras')
+model = load_model('cat_breed_model.keras', custom_objects={'MyLayer': MyLayer})
 
 # Load breed names from breeds directory
 breed_labels = list(os.listdir(dataset_dir_path))
